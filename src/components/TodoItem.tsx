@@ -1,5 +1,17 @@
-import React from 'react';
-import { Todo } from '../types/todo';
+import React from "react";
+import { Todo } from "../types/todo";
+
+import {
+  Flex,
+  Heading,
+  Text,
+  Tag,
+  TagLabel,
+  TagCloseButton,
+} from "@chakra-ui/react";
+
+import { Icon } from '@chakra-ui/react'
+import { DeleteIcon,EditIcon } from '@chakra-ui/icons'
 
 interface TodoItemProps {
   todo: Todo;
@@ -17,17 +29,19 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, onDelete, onToggle }) => {
   };
 
   return (
-    <div>
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={handleToggle}
-      />
-      <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+    <Flex bg={"white"} p={5} rounded={"md"} justifyContent={"space-between"}>
+      <Heading as="h5" size="md">
         {todo.title}
-      </span>
-      <button onClick={handleDelete}>Delete</button>
-    </div>
+      </Heading>
+      <Flex gap={2}>
+      <Tag borderRadius="full" variant="solid" colorScheme={todo.completed? "green":"yellow"}>
+        <TagLabel>{todo.completed? "Done":"Pending"}</TagLabel> 
+      </Tag>
+      <Icon color={'blue'} as={EditIcon} />
+      <Icon as={DeleteIcon} color={"red"} />
+      </Flex>
+     
+    </Flex>
   );
 };
 
