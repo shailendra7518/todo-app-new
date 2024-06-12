@@ -6,8 +6,9 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Select,
+  Button,
 } from "@chakra-ui/react";
+
 const AddTodo: React.FC = () => {
   const [title, setTitle] = useState("");
   const { addTodo } = useActions();
@@ -16,8 +17,7 @@ const AddTodo: React.FC = () => {
     e.preventDefault();
     if (title.trim()) {
       addTodo({
-        userId: 1,
-        id: Math.random(),
+        userId: 10,
         title,
         completed: false,
       });
@@ -32,20 +32,31 @@ const AddTodo: React.FC = () => {
       bg={"#5D5FEF"}
       direction={"column"}
       borderRadius={"md"}
+      minW={"30%"}
+      maxW={"md"}
       p={6}
     >
       <Heading color={"white"} fontSize={"xxx-large"}>
         Todo App
       </Heading>
-      <FormControl bg={"white"} p={3} rounded={"md"} isRequired>
+      <FormControl
+        as="form"
+        bg={"white"}
+        p={3}
+        rounded={"md"}
+        isRequired
+        onSubmit={handleSubmit}
+      >
         <FormLabel>Task Name</FormLabel>
-        <Input placeholder="Add your task name" />
-        <FormLabel>Priority</FormLabel>
-        <Select placeholder="Select Priority">
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </Select>
+        <Input
+          placeholder="Add your task name"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <Button colorScheme="green" mt={2} type="submit" variant="solid">
+          Add Task
+        </Button>
       </FormControl>
     </Flex>
   );

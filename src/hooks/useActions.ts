@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { AppDispatch } from '../state/store';
-import { addTodo, deleteTodo, toggleTodo, fetchTodos } from '../state/todoSlice';
+import { addTodo, deleteTodo, editTodo, fetchTodos } from '../state/todoSlice';
 
 const actionCreators = {
   addTodo,
   deleteTodo,
-  toggleTodo,
+  editTodo,
   fetchTodos,
 };
 

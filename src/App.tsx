@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useActions } from "./hooks/useActions";
 import TodoList from "./components/TodoList";
-import { Box, Container, Flex } from "@chakra-ui/react";
+import {  Flex } from "@chakra-ui/react";
 import AddTodo from "./components/AddTodo";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   }, []);
 
   return (
-    <Flex p={2} alignItems={"center"} justifyContent={["center","space-between"]}  w={'full'}  bg={"#2C43DD"}>\
+    <Flex  direction={["column","column","row"]} alignItems={["space-between","center"]} justifyContent={["center","space-between"]}  w={'full'}  bg={"#2C43DD"}>\
      <AddTodo/>
       <TodoList />;
     </Flex>
